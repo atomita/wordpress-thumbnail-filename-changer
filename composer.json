@@ -1,5 +1,5 @@
 {
-	"name": "wordpress-thumbnail-filename-changer",
+	"name": "atomita/wordpress-thumbnail-filename-changer",
 	"type": "wordpress-plugin",
 	"authors": [
 		{
