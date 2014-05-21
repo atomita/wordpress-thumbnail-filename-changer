@@ -87,7 +87,6 @@ function hack_image_make_intermediate_size( $file, $width, $height, $crop = fals
 			$name = basename($file, ".{$ext}");
 			$resized_file = "{$dir}/{$name}-{$suffix}.{$ext}";
 			
-			$image->rotate( 90 );
 			$image->resize( $width, $height, $crop );
 			$image->save( $resized_file );
 			if ($info = getimagesize( $resized_file )){
