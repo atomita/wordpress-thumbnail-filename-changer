@@ -76,15 +76,29 @@ function hack_image_make_intermediate_size( $file, $width, $height, $crop = fals
 			}
 		}
 		//コアファイルを触らずにサムネイル(jpg)のクオリティ値を変えられます。デフォルトは90。
-		$resized_file = image_resize( $file, $width, $height, $crop, $suffix, null, 90 );
-		if ( !is_wp_error( $resized_file ) && $resized_file && $info = getimagesize( $resized_file ) ) {
-			$resized_file = apply_filters('image_make_intermediate_size', $resized_file);
-			return array(
-				'file' => wp_basename( $resized_file ),
-				'width' => $info[0],
-				'height' => $info[1],
-				'size' => $size
-			);
+		$image = wp_get_image_editor( $file ); // Return an implementation that extends <tt>WP_Image_Editor</tt>
+		if ( ! is_wp_error( $image ) ) {
+			if ( empty($suffix) ){
+				$suffix = "{$width}x{$height}";
+			}
+			$pathinfo = pathinfo($file);
+			$dir = $pathinfo['dirname'];
+			$ext = $pathinfo['extension'];
+			$name = basename($file, ".{$ext}");
+			$resized_file = "{$dir}/{$name}-{$suffix}.{$ext}";
+			
+			$image->rotate( 90 );
+			$image->resize( $width, $height, $crop );
+			$image->save( $resized_file );
+			if ($info = getimagesize( $resized_file )){
+				$resized_file = apply_filters('image_make_intermediate_size', $resized_file);
+				return array(
+					'file' => wp_basename( $resized_file ),
+					'width' => $info[0],
+					'height' => $info[1],
+					'size' => $size
+				);
+			}
 		}
 	}
 	return false;
