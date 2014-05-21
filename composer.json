@@ -1,6 +1,7 @@
 {
 	"name": "atomita/wordpress-thumbnail-filename-changer",
 	"type": "wordpress-plugin",
+	"license": "MIT",
 	"authors": [
 		{
 			"name": "creatorish yuu",
