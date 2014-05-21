@@ -29,7 +29,7 @@ http://creatorish.com/lab/4612
 
 動作確認
 ------
-wordpress3.4↑で動作確認
+wordpress3.9で動作確認
 
 ライセンス
 --------
