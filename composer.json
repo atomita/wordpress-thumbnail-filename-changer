@@ -1,0 +1,18 @@
+{
+	"name": "wordpress-thumbnail-filename-changer",
+	"type": "wordpress-plugin",
+	"authors": [
+		{
+			"name": "creatorish yuu",
+			"homepage": "http://creatorish.com"
+		},
+		{
+			"name": "atomita",
+			"homepage": "https://atomita.github.io/"
+		}
+	],
+	"version": "0.1.0",
+	"require": {
+		"wordpress": ">=3.5"
+	}
+}
