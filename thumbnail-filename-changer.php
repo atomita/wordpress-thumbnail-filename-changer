@@ -15,6 +15,10 @@ function hack_intermediate_image_sizes_advanced( $sizes ) {
 	return array();
 }
 function hack_wp_generate_attachment_metadata( $metadata, $attachment_id ) {
+	if (!isset($metadata['file'])){
+		return $metadata;
+	}
+	
 	$attachment = get_post( $attachment_id );
 	$uploadPath = wp_upload_dir();
 	$file = path_join($uploadPath['basedir'], $metadata['file']);
